@@ -1,1 +1,5 @@
-
+let $mitjana := avg(collection("Campins")//salari)
+for $e in collection("Campins")//empleat
+where $e/salari > $mitjana
+order by number($e/salari) descending
+return concat($e/nom, " ", $e/llinatges, ", ", $e/salari)
