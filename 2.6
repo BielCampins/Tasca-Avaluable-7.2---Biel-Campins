@@ -1,5 +1,4 @@
-let $mitjana := avg(collection("Campins")//salari)
-for $e in collection("Campins")//empleat
-where $e/salari > $mitjana
-order by number($e/salari) descending
-return concat($e/nom, " ", $e/llinatges, ", ", $e/salari)
+for $doc in collection("Campins")
+let $nom_doc := document-uri($doc)
+let $total := count($doc//empleat)
+return concat($nom_doc, ": ", $total)
